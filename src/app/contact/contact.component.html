@@ -1,0 +1,83 @@
+<h1>Contact us</h1>
+
+<form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+
+    <h5 *ngIf="success">Your form is valid!</h5>
+
+    <label>
+      Name:
+      <input type="text" formControlName="name">
+      <div *ngIf="submitted && messageForm.controls.name.errors" class="error">
+        <div *ngIf="messageForm.controls.name.errors.required">Your name is required</div>
+      </div>
+    </label>
+  
+    <label>
+      Message:
+      <textarea formControlName="message"></textarea>
+      <div *ngIf="submitted && messageForm.controls.message.errors" class="error">
+        <div *ngIf="messageForm.controls.message.errors.required">A message is required</div>
+      </div>
+    </label>
+
+    <input type="submit" value="Send message" class="cta">
+  
+  </form>
+
+  <div *ngIf="submitted" class="results">
+    <strong>Name:</strong> 
+    <span>{{ messageForm.controls.name.value }}</span>
+
+    <strong>Message:</strong> 
+    <span>{{ messageForm.controls.message.value }}</span>
+  </div>
+<br>
+<br>
+<hr>
+<h1>Angular 8 pipes</h1>
+<p> Pipes are used to <strong>Transform Data</strong>. It is denoted by symbol |
+  Pipe takes integers, strings, arrays, and date as input separated with |. It transforms the data in
+  the format as required and displays the same in the browser.
+
+</p>
+
+<br><br>
+<h1>{{title | uppercase}}</h1>
+<br>
+<h1>{{title | lowercase}}</h1>
+<br>
+<h1>{{'YAsh' | lowercase}}</h1><br>
+
+<h1>Currency pipe</h1>
+<h1>{{750020.33 | currency:'USD'}}</h1>
+<br>
+<h1>{{750020.33 | currency:'INR'}}</h1>
+<br>
+<h1>Percentage pipe</h1>
+<h1>{{0.6573 | percent }}</h1>
+<br>
+<h1>Date pipe</h1>
+<h1>{{todaydate}}</h1><br>
+  <h1>{{todaydate |date:'d/M/y'}}</h1><br>
+  <h1>{{todaydate |date:'d/MMM/y'}}</h1><br>
+  <h1>{{todaydate | date:'shortTime'}}</h1><br>
+
+  <h1>Decimal pipe</h1>
+  <h1>{{454.848462| number:'3.4-4'}}</h1>
+  <!--3 is for main integer, 4 -4 are for integers to be displayed.  -->
+  <br>
+
+  <!--instructing decimal pipe to show atleast 3 integer values before decimal
+    points and minimum 1 fraction digit, maximum 5 fraction digits.-->
+  <h1>{{5.1325468 | number:'3.1-4'}}</h1><br>
+
+  <h1>JSON Pipe</h1>
+  <strong>
+    {{jsonval | json}}
+  </strong>
+<br><br>
+
+<h1>Slice Pipe</h1>
+  <strong>
+    {{months | slice:2:6}}
+  </strong>
